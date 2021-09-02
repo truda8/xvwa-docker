@@ -64,9 +64,9 @@
               }else{
 
               //uploading file
-                $path = $_SERVER['DOCUMENT_ROOT'].'/xvwa/img/uploads/';
+                $path = $_SERVER['DOCUMENT_ROOT'].'/img/uploads/';
                 $path = $path . basename( $_FILES['image']['name']); 
-                $rpath = '/xvwa/img/uploads/'.basename( $_FILES['image']['name']);
+                $rpath = '/img/uploads/'.basename( $_FILES['image']['name']);
 		if(!move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
                   echo "<h4><b><font color='red'>There was an error uploading the file, please try again!</font></b></h4>";
                 }else{

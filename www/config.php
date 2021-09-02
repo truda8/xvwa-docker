@@ -1,5 +1,5 @@
 <?php
-$XVWA_WEBROOT = "/www/wwwroot/xvwa/";
+$XVWA_WEBROOT = ".";
 $host = "xvwadb";
 $dbname = "xvwa";
 $user = "xvwa";

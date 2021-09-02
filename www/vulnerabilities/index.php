@@ -1,3 +1,3 @@
 <?php
-header("Location: /xvwa/");
+header("Location: /");
 ?>

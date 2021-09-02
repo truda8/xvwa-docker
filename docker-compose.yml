@@ -1,0 +1,32 @@
+version: "3"
+services:
+    xvwadb:
+        image: wangxian/alpine-mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: J8Ldi1A8nq3fKOqGuG7z
+            MYSQL_DATABASE: xvwa
+            MYSQL_USER: xvwa
+            MYSQL_PASSWORD: FSMuSI6yUV9yfi2aMZ31
+
+    phpfpm:
+        build: ./php/
+        restart: always
+        volumes:
+            - ./www:/www/wwwroot/xvwa
+        links:
+            - xvwadb
+
+    nginx:
+        image: nginx:1.20-alpine
+        volumes:
+            - ./nginx:/etc/nginx/templates
+            - ./www:/www/wwwroot/xvwa
+        ports:
+            - "8080:80"
+        environment:
+            HOST: localhost
+            PORT: 80
+            WEB_ROOT: /www/wwwroot/xvwa/
+            PHP_FPM: phpfpm:9000
+            DB_HOST: xvwadb

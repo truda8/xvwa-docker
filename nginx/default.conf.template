@@ -1,0 +1,17 @@
+server {
+    listen        ${PORT};
+    server_name   ${HOST};
+    index         index.html;
+    root          ${WEB_ROOT};
+
+    location / {
+        index index.php index.html index.htm;
+    }
+        
+    location ~ \.php$ {
+        fastcgi_pass    ${PHP_FPM};
+        fastcgi_index   index.php;
+        fastcgi_param   SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include         fastcgi_params;
+    }
+}
